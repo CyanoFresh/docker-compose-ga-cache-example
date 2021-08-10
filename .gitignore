@@ -1,0 +1,6 @@
+*.log
+docker-compose.override.yml
+
+# Project exclude paths
+/app1/node_modules/
+/app2/node_modules/

@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  app1:
+    image: node:lts-slim
+    working_dir: /opt/project
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+    volumes:
+      - ./app1:/opt/project
+      - ./app1/node_modules:/opt/project/node_modules:delegated
+  app2:
+    build:
+      context: ./app2
+      dockerfile: Dockerfile.dev
+    working_dir: /opt/project
+    init: true
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./app2:/opt/project
+      - ./app2/node_modules:/opt/project/node_modules:delegated
