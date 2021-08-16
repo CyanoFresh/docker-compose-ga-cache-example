@@ -70,7 +70,6 @@ jobs:
         with:
           context: ./app1
           file: ./app1/Dockerfile
-          load: true
           push: true
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
@@ -83,7 +82,6 @@ jobs:
         with:
           context: ./app2
           file: ./app2/Dockerfile
-          load: true
           push: true
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
