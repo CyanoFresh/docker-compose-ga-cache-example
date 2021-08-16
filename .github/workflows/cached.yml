@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build the stack
-        run: docker-compose build --verbose --build-arg BUILDKIT_INLINE_CACHE=1
+        run: docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1
 
       - name: Push the stack
         run: docker-compose push --verbose
