@@ -33,7 +33,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build the stack
-        run: docker-compose -f ./docker-compose.ci.not-cached.yml build
+        run: docker-compose -f ./docker-compose.ci.not-cached.yml --verbose build
 
       - name: Push the stack
-        run: docker-compose -f ./docker-compose.ci.not-cached.yml push --verbose
+        run: docker-compose -f ./docker-compose.ci.not-cached.yml --verbose push
