@@ -1,0 +1,40 @@
+name: [Cached] Docker Build & Push on release
+
+on:
+  release:
+    types: [published]
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+#  DOCKER_BUILDKIT: 1
+#  COMPOSE_DOCKER_CLI_BUILD: 1
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+#      - name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v1
+
+      - name: Login to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@28218f9b04b4f3f62068d7b6ce6ca5b26e35336c
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build the stack
+        run: docker-compose build
+
+      - name: Push the stack
+        run: docker-compose push
