@@ -67,7 +67,7 @@ jobs:
 #          cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
 
       - name: Build the stack
-        run: docker-compose build
+        run: docker-compose build --build-arg BUILDKIT_INLINE_CACHE=1
 
       - name: Push the stack
         run: docker-compose push
