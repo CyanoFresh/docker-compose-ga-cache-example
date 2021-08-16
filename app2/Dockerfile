@@ -14,7 +14,7 @@ WORKDIR /opt/project
 COPY package*.json ./
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-RUN npm ci --only=production
+RUN npm ci --only=production && npm cache clean --force
 
 COPY --chown=node:node . .
 
