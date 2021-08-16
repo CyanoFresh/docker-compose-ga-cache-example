@@ -7,5 +7,5 @@ const puppeteer = require('puppeteer');
         executablePath: 'google-chrome-stable',
     });
     const page = await browser.newPage();
-    await page.goto('https://google.com.ua');
+    await page.goto('https://google.com');
 })();
