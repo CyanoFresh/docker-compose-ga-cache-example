@@ -6,7 +6,6 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
 #  DOCKER_BUILDKIT: 1
 #  COMPOSE_DOCKER_CLI_BUILD: 1
 
@@ -34,7 +33,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build the stack
-        run: docker-compose build --verbose
+        run: docker-compose -f ./docker-compose.ci.not-cached.yml build --verbose
 
       - name: Push the stack
-        run: docker-compose push --verbose
+        run: docker-compose -f ./docker-compose.ci.not-cached.yml push --verbose

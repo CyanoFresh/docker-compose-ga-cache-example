@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  app1:
+    build: ./app1
+    image: ghcr.io/cyanofresh/docker-compose-ga-cache-example_app1:not-cached
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+  app2:
+    build: ./app2
+    image: ghcr.io/cyanofresh/docker-compose-ga-cache-example_app2:not-cached
+    ports:
+      - "4000:4000"
+    environment:
+      NODE_ENV: production
+      PORT: 4000
