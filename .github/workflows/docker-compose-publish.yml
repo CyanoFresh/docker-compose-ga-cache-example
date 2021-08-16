@@ -71,7 +71,7 @@ jobs:
           context: ./app1
           file: ./app1/Dockerfile
           load: true
-          push: false
+          push: true
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
@@ -84,18 +84,18 @@ jobs:
           context: ./app2
           file: ./app2/Dockerfile
           load: true
-          push: false
+          push: true
           builder: ${{ steps.buildx.outputs.name }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,mode=max,dest=/tmp/.buildx-cache-new
 
-      - name: Build the stack
-        run: docker-compose build --pull --build-arg BUILDKIT_INLINE_CACHE=1
-
-      - name: Push the stack
-        run: docker-compose push
+#      - name: Build the stack
+#        run: docker-compose build --pull --build-arg BUILDKIT_INLINE_CACHE=1
+#
+#      - name: Push the stack
+#        run: docker-compose push
 
       - name: Move cache
         run: |
