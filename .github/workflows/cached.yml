@@ -1,4 +1,4 @@
-name: [Cached] Docker Build & Push on release
+name: "[Cached] Docker Build & Push on release"
 
 on:
   release:
