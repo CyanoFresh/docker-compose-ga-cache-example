@@ -1,10 +1,8 @@
 name: Docker Build & Push on release
 
 on:
-  push:
-    branches: [ release ]
-    tags: [ 'v*.*.*' ]
-  workflow_dispatch:
+  release:
+    types: [published]
 
 env:
   REGISTRY: ghcr.io
