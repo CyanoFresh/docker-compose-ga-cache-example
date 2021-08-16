@@ -2,7 +2,10 @@ version: "3.9"
 
 services:
   app1:
-    build: app1
+    build:
+      context: ./app1
+      cache_from:
+        - ghcr.io/cyanofresh/docker-compose-ga-cache-example_app1
     image: ghcr.io/cyanofresh/docker-compose-ga-cache-example_app1
     ports:
       - "3000:3000"
@@ -10,7 +13,10 @@ services:
       NODE_ENV: production
       PORT: 3000
   app2:
-    build: app2
+    build:
+      context: ./app2
+      cache_from:
+        - ghcr.io/cyanofresh/docker-compose-ga-cache-example_app2
     image: ghcr.io/cyanofresh/docker-compose-ga-cache-example_app2
     ports:
       - "4000:4000"
